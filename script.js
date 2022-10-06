@@ -1,5 +1,4 @@
 let color = "black";
-let click = true;
 let board = document.querySelector('.board');
 let black = document.querySelector('#black');
 let white = document.querySelector('#white');
@@ -53,9 +52,7 @@ function changeColor() {
 changeColor();
 
 function colorSquare() {
-    if(click) {
         this.style.backgroundColor = color;
-    }
 }
 
 function resetBoard() {
@@ -67,7 +64,4 @@ function resetBoard() {
 }
 resetBoard();
 
-document.querySelector('body').addEventListener('click', function() {
-     click = !click;
-})
 
