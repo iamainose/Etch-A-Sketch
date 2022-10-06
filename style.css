@@ -1,0 +1,136 @@
+.board {
+  width: 600px;
+  height: 600px;
+  display: grid;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.board:hover {
+  cursor: pointer;
+}
+
+body {
+  background-color: black;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 70px;
+  margin-bottom: 50px;
+  gap: 8px;
+}
+
+button {
+  padding: 20px;
+  max-width: 120px;
+  border-radius: 30px;
+  font-size: 20px;
+}
+button:hover {
+  background-color: black;
+  color: white;
+  border: 2px solid black;
+}
+
+.header {
+  text-align: center;
+  font-size: 50px;
+  font-style: inherit;
+  color: white;
+}
+
+.rangeslider {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.myslider {
+  width: 400px;
+}
+
+p {
+  color: white;
+  font-size: 35px;
+}
+
+input[type="range"] {
+  color: azure;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 10px;
+  border: 1px solid var(--primary-dark);
+  border-radius: 25px;
+  background: grey;
+  color: white;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  border-radius: 25px;
+  margin-top: -3px;
+  background: grey;
+  color: white;
+}
+
+@media (max-width: 650px) {
+  .buttons {
+    display: flex;
+    justify-content: center;
+    margin-left: 290px;
+  }
+
+  .header {
+     margin-right: -260px;
+  }
+  .myslider {
+     margin-right: -280px;
+  }
+}
+
+@media (max-width: 300px) {
+    .buttons {
+         margin-left: 330px;
+    }
+
+    .header {
+      margin-right: -370px;
+    }
+
+    .myslider {
+         margin-right: -370px;
+    }
+}
+
+@media (max-width: 550px) {
+     .container {
+       margin-right: -210px;
+     }
+}
+@media (max-width: 470px) {
+    .container {
+       margin-right: -240px;
+    }
+}
+
+@media (min-width: 553px) and (max-width: 648px) {
+     .container {
+         margin-right: -180px;
+     }
+}

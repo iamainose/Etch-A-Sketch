@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SketchPad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 class="header"> Etch-A-Sketch</h2>
+   <div class="buttons">
+    <button id="black">Black</button>
+    <button id="white">Eraser</button>
+    <button id="gray">Gray</button>
+    <button id="random">Random</button>
+    <button id="reset">Reset</button>
+   </div>
+   <div class="container">
+        <div class="board"></div>
+    </div>
+
+      
+   
+
+    <div class="rangeslider">
+        <input type="range" min="1" max="100" value="16"
+        class="myslider" id="sliderRange" onchange="changeSize(this.value)">
+<p>Grid: <span id="demo"></span></p>
+      </div>
+
+      </div>
+    <script src="./script.js"></script>
+</body>
+</html>
