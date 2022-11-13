@@ -1,67 +1,68 @@
+let board = document.querySelector(".board");
+let slider = document.getElementById("sliderRange");
+let currentSize = 16;
 let color = "black";
-let board = document.querySelector('.board');
-let black = document.querySelector('#black');
-let white = document.querySelector('#white');
-let gray = document.querySelector('#gray');
-let reset = document.querySelector('#reset');
-let random = document.querySelector('#random');
 
-function boardSize(size) {
-    board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
-    let squares = board.querySelectorAll('div');
-    squares.forEach((div) => div.remove());
-    let amount = size * size;
-    for(let i = 0; i < amount; i++) {
-        let square = document.createElement('div');
-        square.addEventListener('mouseover', colorSquare);
-        square.style.backgroundColor = "white";
-        board.appendChild(square);
-    }
+function boardSize(num) {
+  board.style.gridTemplateColumns = `repeat(${num}, 1fr)`;
+  board.style.gridTemplateRows = `repeat(${num}, 1fr)`;
+  for (let i = 0; i < num * num; i++) {
+    let squares = document.createElement("div");
+    squares.classList.add("grid");
+    squares.addEventListener("mousemove", random);
+    board.appendChild(squares);
+  }
 }
-boardSize(16);
+boardSize(currentSize);
 
-
-var rangeslider = document.getElementById("sliderRange");
-var output = document.getElementById("demo");
-output.style.color = "white";
-output.innerHTML = rangeslider.value;
-  
-rangeslider.oninput = function() {
-  output.innerHTML = this.value;
+function sizeGrid(num) {
+  let demo = document.getElementById("demo");
+  demo.textContent = `${num} x ${num}`;
+  boardSize(num);
 }
 
-function changeSize(input) {
-   boardSize(input);
+function changeSize(num) {
+  board.innerHTML = "";
+  sizeGrid(num);
+}
+
+slider.addEventListener("change", (e) => {
+  changeSize(e.target.value);
+});
+
+function choice(choice) {
+  color = choice;
+}
+
+function random() {
+  if (color === "random") {
+    const randomR = Math.floor(Math.random() * 256);
+    const randomG = Math.floor(Math.random() * 256);
+    const randomB = Math.floor(Math.random() * 256);
+    this.style.backgroundColor = `RGB(${randomR}, ${randomG}, ${randomB})`;
+  } else {
+    this.style.backgroundColor = color;
+  }
 }
 
 function changeColor() {
-    black.addEventListener('click', function() {
+  let buttons = document.querySelectorAll("button");
+  buttons.forEach((button) => {
+    button.addEventListener("click", function (e) {
+      if (button.classList.contains("black")) {
         color = "black";
-   })
-   white.addEventListener('click', function() {
-        color = 'white';
-   })
-   gray.addEventListener('click', function() {
-        color = 'gray';
-   })
-   random.addEventListener('click', function() {
-    color = `hsl(${Math.random() * 360}, 100%, 50%)`;
-   })
+      } else if (button.classList.contains("gray")) {
+        color = "lightgray";
+      } else if (button.classList.contains("white")) {
+        color = "white";
+      } else if (button.classList.contains("reset")) {
+        board = document.querySelector(".board");
+        let squares = board.querySelectorAll("div");
+        squares.forEach((div) => (div.style.backgroundColor = "lightgray"));
+      }
+    });
+  });
 }
 changeColor();
-
-function colorSquare() {
-        this.style.backgroundColor = color;
-}
-
-function resetBoard() {
-    document.querySelector('#reset').addEventListener('click', function() {
-         board = document.querySelector('.board'); 
-         let squares = board.querySelectorAll('div');
-         squares.forEach((div) => div.style.backgroundColor = 'white');
-    })
-}
-resetBoard();
 
 
